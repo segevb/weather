@@ -15,6 +15,7 @@ def send(key, host, city):
             print("city not found")
             exit()
 
-    response = response.json()
-    print(response["main"]["temp"])
-    results.city = input("Enter city: (Press q to quit) ")
+        response = response.json()
+
+        print(response["main"]["temp"])
+        city = input("Enter city: (Press q to quit) ")
