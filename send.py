@@ -1,7 +1,8 @@
 import requests  # import to requests http library
-
+from logs import logger
 
 def send(key, host, city):
+    logger.info("Requested city temperature for " + city)
     url = "https://community-open-weather-map.p.rapidapi.com/weather"  # open weather url endpoint
 
     while city != "q":
