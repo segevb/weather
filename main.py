@@ -4,7 +4,7 @@ import argparse
 
 
 def load_config():
-    with open('./configurations.json') as json_file:
+    with open('/intservice/configurations.json') as json_file:
         configs = json.load(json_file)
         key = configs['configurations']['key']
         host = configs['configurations']['host']
