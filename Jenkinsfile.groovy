@@ -15,9 +15,9 @@ pipeline {
                 }
             }
         }
-        stage('check working directory') {
+        stage('Print Inputed string') {
             steps {
-                sh "pwd"
+                println("Input was " + userInput)
             }
 
         }
