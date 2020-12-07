@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         stage('Input') {
-            input 'Please provide your input'
+            userInput = input message: 'Please provide your input', ok: 'confirm', parameters: [choice(name: '', choices: ['option 1', 'option2'], description: '')]
         }
         stage('Hello') {
             steps {
