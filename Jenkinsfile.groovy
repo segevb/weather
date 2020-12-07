@@ -2,6 +2,9 @@ pipeline {
     agent any
 
     stages {
+        stage('Input') {
+            input 'Please provide your input'
+        }
         stage('Hello') {
             steps {
                 dir ('coolNewDirectory') {
