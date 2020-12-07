@@ -11,13 +11,6 @@ pipeline {
                 }
             }
         }
-###        stage('Test Docker image') {
-###            steps {
-###                script {
-###                    sh "sh ./basic.test.sh"
-###                }
-###            }
-###        }
         stage('Upload image to repository') {
             steps {
                 println("Input was " + userInput)
