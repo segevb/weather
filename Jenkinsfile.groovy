@@ -1,3 +1,5 @@
+def userInput
+
 pipeline {
     agent any
 
