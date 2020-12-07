@@ -4,22 +4,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Input') {
+        stage('Build Docker image') {
             steps {
                 script {
-                    userInput = input message: 'Please provide your input', ok: 'confirm', parameters: [choice(name: '', choices: ['option 1', 'option2'], description: '')]
+                    sh " docker build -t weather ."
                 }
             }
         }
-        stage('Hello') {
-            steps {
-                dir ('coolNewDirectory') {
-                    git branch: 'main', credentialsId: 'github_cred', url: 'https://github.com/segevb/weather.git'
-                    echo 'Hello World'
-                }
-            }
-        }
-        stage('Print Inputed string') {
+#        stage('Test Docker image') {
+#            steps {
+#                script {
+#                    sh "sh ./basic.test.sh"
+#                }
+#            }
+#        }
+        stage('Upload image to repository') {
             steps {
                 println("Input was " + userInput)
             }
