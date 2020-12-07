@@ -5,7 +5,11 @@ pipeline {
 
     stages {
         stage('Input') {
-            userInput = input message: 'Please provide your input', ok: 'confirm', parameters: [choice(name: '', choices: ['option 1', 'option2'], description: '')]
+            steps {
+                script {
+                    userInput = input message: 'Please provide your input', ok: 'confirm', parameters: [choice(name: '', choices: ['option 1', 'option2'], description: '')]
+                }
+            }
         }
         stage('Hello') {
             steps {
