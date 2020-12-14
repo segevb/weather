@@ -1,3 +1,9 @@
+#!/bin/bash
+sudo docker run weather -c city
+
+
+
+
 //#!/bin/bash
 //check_result () {
 //    RESULT=$?
