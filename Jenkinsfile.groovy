@@ -9,11 +9,10 @@ pipeline {
     stages {
         stage('Build Docker image') {
             steps {
-                dir('weather') {
                     script {
                         sh "sudo docker build -t weather ."
                     }
-                }
+
             }
         }
 //        stage('Test Docker image') {
