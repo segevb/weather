@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Build Docker image') {
             steps {
-                dir('weather'){
+                dir('weather') {
                     script {
                         sh "sudo docker build -t weather ."
                     }
@@ -36,6 +36,8 @@ pipeline {
                 sh "pwd"
             }
         }
+    }
+}
 //        stage('Deploy to Prod') {
 //            steps {
 //                println("Empty stage")
