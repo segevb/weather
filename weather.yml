@@ -10,8 +10,8 @@
         update_cache: yes
       become: yes
 
-    - name: Start  docker service
+    - name: Start docker service
       service:
         name: docker
         state: started
-      become: yes
+      become: yes                                                                                                                                                ~
