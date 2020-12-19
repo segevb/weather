@@ -1,0 +1,17 @@
+---
+- name: weather service deployment
+  hosts: weather
+
+  tasks:
+    - name: Make sure docker is installed
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+      become: yes
+
+    - name: Start  docker service
+      service:
+        name: docker
+        state: started
+      become: yes
