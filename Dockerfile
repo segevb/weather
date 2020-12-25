@@ -1,5 +1,5 @@
 FROM python:3
-USER root
+
 RUN mkdir /intservice
 RUN chmod -R 755 /intservice
 RUN pip install requests
