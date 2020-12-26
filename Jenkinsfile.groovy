@@ -41,6 +41,10 @@ pipeline {
                 sh "pwd"
             }
         }
+        stage('Deploy to Prod') {
+            steps {
+                println("Empty stage")
+            }
     }
 }
 
