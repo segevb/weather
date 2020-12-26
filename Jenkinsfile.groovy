@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script{
                     try {
-                        sh "./basic.test.sh segevb/weather_app:${latestVersion}-${lastCommit}"
+                        sh "./basic.test.sh segevb/weather_app:${latestVersion}-${lastCommit} . "
                     } catch (err) {
                         println("Error thrown on test file execution")
 //                      currentBuild.result = 'ABORTED'
