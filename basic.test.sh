@@ -1,27 +1,25 @@
 #!/bin/bash
 TAG=$1
 check_result () {
-    RESULT=$?
-            MESSAGE=$1
-    if [ $RESULT == 0 ]; then
+  RESULT=$?
+  MESSAGE=$1
+  if [ $RESULT == 0 ]; then
     echo [SUCCESS] $MESSAGE
-    else
+  else
     echo [FAIL] $MESSAGE
     exit 1
-    fi
+  fi
 }
 
+# Test if received right output
+list = [eilat, london, rehovot]
+for city in list; do
+  sudo docker run weather:$TAG -c city
+  check_result city
+done
 
 
-
-
-# for sentiment in positive negative neutral; do
-# sudo docker run weather:$TAG -c $city | grep $city
-# check_result $city
-# done
-
-# exit 0
-
+# Test if site is UP/DOWN
 if curl -s --head  --request GET https://community-open-weather-map.p.rapidapi.com/?rapidapi-key=fc03dcea31msh89ee8e25d5442c6p1f4633jsn5934736d9bb5 | grep "200 OK" > /dev/null; then
    echo "Server is UP"
 else
