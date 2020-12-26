@@ -5,7 +5,7 @@ def send(key, host, city):
     logger.info("Requested city temperature for " + city)
     url = "https://community-open-weather-map.p.rapidapi.com/weather"  # open weather url endpoint
 
-    #    while city != "q":
+#    while city != "q":
     querystring = {"q": city, "units": "metric"}  # my query
     headers = {
         'x-rapidapi-host': key,
