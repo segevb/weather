@@ -1,4 +1,5 @@
-def userInput
+def lastCommit
+def latestVersion
 
 pipeline {
 
@@ -10,8 +11,14 @@ pipeline {
         stage('Build Docker image') {
             steps {
                     script {
-                        sh "sudo docker build -t weather ."
+                        println("Getting commit id and latest Version")
+                        lastCommit = sh script: "git log | head -1 | awk '{print \$2}' | cut -c1-6", returnStdout: true
+                        latestVersion = sh script: "git branch -r | cut -d '/' -f2 | grep 0. | sort -r | head -1", returnStdout: true
+                        
                     }
+                script {
+                    sh "sudo docker build -t segevb/weather_app:${latestVersion}-${lastCommit} . "
+                }
 
             }
         }
