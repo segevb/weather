@@ -21,21 +21,21 @@ pipeline {
                     sh "sudo docker build -t segevb/weather_app:${latestVersion}-${lastCommit} . "
                 }
             }
-            }
+        }
 
         stage('Test Docker image') {
             steps {
-                script{
+                script {
                     try {
                         sh "./basic.test.sh segevb/weather_app:${latestVersion}-${lastCommit} . "
                     } catch (err) {
                         println("Error thrown on test file execution")
 //                      currentBuild.result = 'ABORTED'
 //                      error('Error thrown on test file execution')
-                        }
                     }
                 }
             }
+        }
         stage('Upload image to repository') {
             steps {
                 sh "pwd"
@@ -45,6 +45,7 @@ pipeline {
             steps {
                 println("Empty stage")
             }
+        }
     }
 }
 
