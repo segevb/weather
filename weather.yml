@@ -1,6 +1,7 @@
 ---
 - name: weather service deployment
   hosts: weather
+  become: yes
 
   tasks:
     - name: Make sure docker is installed
@@ -8,36 +9,20 @@
         name: docker.io
         state: present
         update_cache: yes
-      become: yes
+
 
     - name: Start docker service
       service:
         name: docker
         state: started
-      become: yes
 
-    - name: export image
-      shell: "docker save weather:latest > /tmp/weather.tar"
-      become: yes
-      delegate_to: 127.0.0.1
-
-    - name: set permissions
-      file:
-        path: /tmp/weather.tar
-        owner: ubuntu
-        group: ubuntu
-        mode: '0777'
-      become: yes
-      delegate_to: 127.0.0.1
-
-    - name: Copy Docker image to remote location
-      copy:
-        src: /tmp/weather.tar
-        dest: /tmp/weather.tar
 
     - name: Load Docker image
       docker_image:
         name: weather
         tag: latest
         load_path: /tmp/weather.tar
-      become: yes
+
+
+    - name: Start weather container
+      shell: "docker run segevb/weather_app:{{ tag }} -c eilat"
