@@ -10,19 +10,10 @@
         state: present
         update_cache: yes
 
-
     - name: Start docker service
       service:
         name: docker
         state: started
-
-
-    - name: Load Docker image
-      docker_image:
-        name: weather
-        tag: latest
-        load_path: /tmp/weather.tar
-
 
     - name: Start weather container
       shell: "docker run segevb/weather_app:{{ tag }} -c eilat"
