@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Upload image to repository') {
             steps {
-                sh "pwd"
+                sh "sudo docker push segevb/weather_app:${latestVersion}-${lastCommit}"
             }
         }
         stage('Deploy to Prod') {
