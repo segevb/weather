@@ -24,13 +24,13 @@ pipeline {
         }
         stage('Test Docker image') {
             steps {
-                    script{
-                        try {
-                            sh "./basic.test.sh segevb/weather_app:${latestVersion}-${lastCommit}"
-                        } catch (err) {
-                            println("Error thrown on test file execution")
-//                            currentBuild.result = 'ABORTED'
-//                            error('Error thrown on test file execution')
+                script{
+                    try {
+                        sh "./basic.test.sh segevb/weather_app:${latestVersion}-${lastCommit}"
+                    } catch (err) {
+                        println("Error thrown on test file execution")
+//                      currentBuild.result = 'ABORTED'
+//                      error('Error thrown on test file execution')
                         }
                     }
                 }
