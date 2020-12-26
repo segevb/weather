@@ -21,7 +21,7 @@ pipeline {
                 }
             }
             }
-        }
+
         stage('Test Docker image') {
             steps {
                 script{
@@ -41,6 +41,8 @@ pipeline {
             }
         }
     }
+}
+
 
 //        stage('Deploy to Prod') {
 //            steps {
