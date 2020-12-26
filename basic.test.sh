@@ -1,4 +1,5 @@
 #!/bin/bash
+TAG=$1
 check_result () {
     RESULT=$?
             MESSAGE=$1
@@ -15,8 +16,8 @@ check_result () {
 
 
 # for sentiment in positive negative neutral; do
-# sudo docker run intservice -w $sentiment | grep $sentiment
-# check_result $sentiment
+# sudo docker run weather:$TAG -c $city | grep $city
+# check_result $city
 # done
 
 # exit 0

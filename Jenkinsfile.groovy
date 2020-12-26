@@ -14,19 +14,20 @@ pipeline {
                         println("Getting commit id and latest Version")
                         lastCommit = sh script: "git log | head -1 | awk '{print \$2}' | cut -c1-6", returnStdout: true
                         latestVersion = sh script: "git branch -r | cut -d '/' -f2 | grep 0. | sort -r | head -1", returnStdout: true
-                        
+                        println("Latest Version seen is ${latestVersion}")
+                        println("Latest commit seen is ${lastCommit}")
+                        script {
+                            sh "sudo docker build -t segevb/weather_app:${latestVersion}-${lastCommit} . "
+                        }
+                        }
                     }
-                script {
-                    sh "sudo docker build -t segevb/weather_app:${latestVersion}-${lastCommit} . "
-                }
-
             }
         }
         stage('Test Docker image') {
             steps {
                     script{
                         try {
-                            sh "./basic.test.sh"
+                            sh "./basic.test.sh segevb/weather_app:${latestVersion}-${lastCommit}"
                         } catch (err) {
                             println("Error thrown on test file execution")
 //                            currentBuild.result = 'ABORTED'
@@ -41,7 +42,7 @@ pipeline {
             }
         }
     }
-}
+
 //        stage('Deploy to Prod') {
 //            steps {
 //                println("Empty stage")
