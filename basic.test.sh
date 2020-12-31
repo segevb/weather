@@ -14,7 +14,7 @@ check_result () {
 # Test if received right output
 
 for city in eilat london; do
-  sudo docker run weather:$TAG -c $city
+  sudo docker run $TAG -c $city
   check_result $city
 done
 
