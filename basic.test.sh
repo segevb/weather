@@ -12,7 +12,7 @@ check_result () {
 }
 
 # Test if received right output
-list=["eilat" "london" "rehovot"]
+list=["eilat" "rehovot"]
 for city in "${list[@]}"; do
   sudo docker run weather:$TAG -c city
   check_result city
