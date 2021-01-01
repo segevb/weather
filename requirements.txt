@@ -4,3 +4,4 @@ docker-py has to be installed using pip3 since ansible been run with -e ansible_
 
 docker-py: 1.7
 
+Flask==1.0.2
