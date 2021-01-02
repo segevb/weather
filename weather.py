@@ -22,12 +22,13 @@ def main():
     response = send.send(host, key, city)
     print(host, key, "@@@@@@@@@@@@@@@@@@@@@@@@")
     print(response,"#############")
-    json_response = json.loads(str({(response)}))
-    print(json_response, "*************************")
+ #   json_response = json.loads(response)
+#    print(json_response, "*************************")
 
-# this can be used to custom construct json response
-# data = {}
-# data['key'] = 'value'
-# json_data = json.dumps(data)
+    # this can be used to custom construct json response
+    # data = {}
+    # data['key'] = 'value'
+    # json_data = json.dumps(data)
 
-   return json_response['city']
+
+#    return json_response['city']
