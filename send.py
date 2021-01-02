@@ -12,7 +12,7 @@ def send(key, host, city):
         'x-rapidapi-key': host
     }
     response = requests.request("GET", url, headers=headers, params=querystring)
-        if response.status_code != 200:
+    if response.status_code != 200:
         print("city not found")
         exit()
 
