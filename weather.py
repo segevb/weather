@@ -1,4 +1,3 @@
-from flask import Flask
 from flask import request
 import json
 import send
@@ -17,15 +16,19 @@ def load_config():
 
 def main():
     data = request.get_json() or {}
-    word = data['word']
+    city = data['city']
     key = load_config()[0]
     host = load_config()[1]
-    response = send.send(key, host, word)
-    json_response = json.loads(response)
+    response = send.send(host, key, city)
+    print(host, key, "@@@@@@@@@@@@@@@@@@@@@@@@")
+    print(response,"#############")
+#   json_response = json.loads(response)
+#    print(json_response, "*************************")
 
-    # this can be used to custom construct json response
-    # data = {}
-    # data['key'] = 'value'
-    # json_data = json.dumps(data)
+# this can be used to custom construct json response
+# data = {}
+# data['key'] = 'value'
+# json_data = json.dumps(data)
 
-    return json_response['city']
+
+#    return json_response['city']
