@@ -21,15 +21,16 @@ def main():
     key = load_config()[0]
     host = load_config()[1]
     response = send.send(host, key, city)
-    print(host, key, "@@@@@@@@@@@@@@@@@@@@@@@@")
-    print(response,"#############")
- #   json_response = json.loads(response)
-#    print(json_response, "*************************")
 
     # this can be used to custom construct json response
     # data = {}
     # data['key'] = 'value'
     # json_data = json.dumps(data)
 
+    temp_result = response["main"]["temp"]
+    string_temp_result = str(temp_result)
+    city_temp_print = ("The temperature in " + city + " is: " + string_temp_result + " C")
 
-#    return json_response['city']
+    print(city_temp_print)
+
+    return city_temp_print
