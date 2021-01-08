@@ -16,4 +16,4 @@
         state: started
 
     - name: Start weather container
-      shell: "docker run segevb/weather_app:{{ tag }} -c eilat"
+      shell: "docker run -p 5000:5000 -d --restart always segevb/weather_app:{{ tag }}"
