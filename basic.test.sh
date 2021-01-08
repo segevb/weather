@@ -11,10 +11,14 @@ check_result () {
   fi
 }
 
+containerName=$(echo $TAG | cut -d'-' -f2)
+
+docker run -d -p 5000:5000 --name $containerName $TAG
+
 # Test if received right output
 
 for city in eilat london; do
-  sudo docker run $TAG -c $city
+  sudo  curl -s -X POST --header "Content-Type: application/json" --data '{"city":"'$city'"}' http://localhost:5000 | grep $city
   check_result $city
 done
 
