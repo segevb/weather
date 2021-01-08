@@ -13,7 +13,7 @@ check_result () {
 
 containerName=$(echo $TAG | cut -d'-' -f2)
 
-docker run -d -p 5000:5000 --name $containerName $TAG
+sudo docker run -d -p 5000:5000 --name $containerName $TAG
 
 # Test if received right output
 
