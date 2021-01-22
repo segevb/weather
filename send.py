@@ -17,7 +17,7 @@ def send(key, host, city):
         exit()
 
     response = response.json()
-#   print("The temperature in", city, "is:", response["main"]["temp"], "°C")
+    print("The temperature in", city, "is:", response["main"]["temp"], "°C")
 #   city = input("Enter city: (Press q to quit) ")
 
 
