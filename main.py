@@ -22,6 +22,6 @@ def main():  # Main function
     host = load_config()[0]
 
     response = send.send(key, host, city)
-#    print(response)
+    print(response)
 
 main()
